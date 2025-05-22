@@ -8,6 +8,10 @@ package org.steelhawks.lib.math;
 
 import edu.wpi.first.math.geometry.Translation2d;
 
+/**
+ * A utility class providing mathematical functions and conversions commonly used in robotics. This
+ * includes angle conversions, unit conversions for wheels and rotations, and vector operations.
+ */
 public final class HawkMath {
 
     private HawkMath() {}
@@ -40,6 +44,12 @@ public final class HawkMath {
         return (angle + Math.PI) % (2 * Math.PI) - Math.PI;
     }
 
+    /**
+     * Converts an angle from a 0-360 degree range to a -180 to 180 degree range.
+     *
+     * @param angle The angle in degrees (in 0-360 range)
+     * @return The angle in degrees (in -180 to 180 range)
+     */
     public static double convert360To180(double angle) {
         return (angle + 180) % 360 - 180;
     }

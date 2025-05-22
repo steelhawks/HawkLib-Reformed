@@ -21,13 +21,20 @@ public class Angle {
     private static final double TO_RADIANS = Math.PI / 180.0;
     private static final double TO_ROTATIONS = 1.0 / (2 * Math.PI);
 
+    /** The mathematical constant π (pi), the ratio of a circle's circumference to its diameter. */
     public static final double kPi = Math.PI;
+    /** The mathematical constant 2π (two pi), representing a full circle in radians. */
     public static final double kTwoPi = 2 * Math.PI;
+    /** The mathematical constant π/2 (pi/2), representing a quarter circle or 90 degrees. */
     public static final double kHalfPi = Math.PI / 2;
+    /** The mathematical constant π/4 (pi/4), representing an eighth circle or 45 degrees. */
     public static final double kQuarterPi = Math.PI / 4;
 
+    /** The angle value in radians. */
     public final double radians;
+    /** The cosine value of this angle. */
     public final double cos;
+    /** The sine value of this angle. */
     public final double sin;
 
     /**
@@ -56,6 +63,7 @@ public class Angle {
      * Creates a new Angle object with the specified angle in degrees.
      *
      * @param degrees The angle in degrees.
+     * @return A new Angle object representing the angle in radians.
      */
     public static Angle fromDegrees(double degrees) {
         return new Angle(degrees * TO_RADIANS);
@@ -65,10 +73,18 @@ public class Angle {
      * Creates a new Angle object with the specified angle in rotations.
      *
      * @param rotations The angle in rotations.
+     * @return A new ANgle object representing the angle in radians.
      */
     public static Angle fromRotations(double rotations) {
         return new Angle(rotations * kTwoPi);
     }
+
+    /**
+     * Creates a new Angle object with the specified angle in rotations.
+     *
+     * @param rotations The angle in rotations (where 1 rotation = 360 degrees = 2π radians).
+     * @return A new Angle object representing the angle in radians.
+     */
 
     /**
      * Creates a new Angle object from a vector represented by its x and y components.
@@ -101,6 +117,12 @@ public class Angle {
         return new Angle(Math.atan(slope));
     }
 
+    /**
+     * Creates a new Angle object from a WPILib Rotation2d object.
+     *
+     * @param rotation The Rotation2d object to convert.
+     * @return A new Angle object representing the same angle.
+     */
     public static Angle fromRotation2d(Rotation2d rotation) {
         return new Angle(rotation.getRadians());
     }
@@ -153,5 +175,10 @@ public class Angle {
         }
         Angle angle = (Angle) obj;
         return Double.compare(angle.radians, radians) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Double.hashCode(radians);
     }
 }
