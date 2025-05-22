@@ -79,7 +79,17 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">This class is used to create virtual subsystems to be able to access a periodic function. Should
  be used for non-physical subsystems that need to run a periodic function. This is separate from
- the normal SubsystemBase class, meaning you do not clog up the CommandScheduler.</div>
+ the normal SubsystemBase class, meaning you do not clog up the CommandScheduler.
+
+ <p>For this to work, make sure periodicAll() is being called in robotPeriodic()</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#periodicAll()"><code>periodicAll()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">

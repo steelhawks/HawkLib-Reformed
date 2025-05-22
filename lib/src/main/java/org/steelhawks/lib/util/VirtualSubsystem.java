@@ -17,6 +17,9 @@ import java.util.List;
  * be used for non-physical subsystems that need to run a periodic function. This is separate from
  * the normal SubsystemBase class, meaning you do not clog up the CommandScheduler.
  *
+ * <p>For this to work, make sure periodicAll() is being called in robotPeriodic()
+ *
+ * @see #periodicAll()
  * @author Farhan Jamil
  */
 public abstract class VirtualSubsystem {
