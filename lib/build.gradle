@@ -1,0 +1,114 @@
+buildscript {
+    ext.WPI_VER = "2025.2.1"
+}
+
+plugins {
+    id 'java-library'
+    id "maven-publish"
+    id "com.github.spotbugs" version "5.2.0"
+    id "edu.wpi.first.GradleRIO" version "2025.2.1"
+    id "com.diffplug.spotless" version "6.22.0"
+}
+
+repositories {
+    mavenCentral()
+    // WPILib Java API
+    maven { url = uri("https://frcmaven.wpi.edu/release") }
+
+    // WPILib native (JNI) libs for all platforms:
+    maven { url = uri("https://frcmaven.wpi.edu/artifactory/release/") }
+}
+
+
+dependencies {
+    // Use JUnit test framework.
+    testImplementation libs.junit
+
+    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    api libs.commons.math3
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation libs.guava
+
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+    nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
+    simulationDebug wpi.sim.enableDebug()
+
+    nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
+    nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
+    simulationRelease wpi.sim.enableRelease()
+
+    implementation "edu.wpi.first.ntcore:ntcore-java:${WPI_VER}"
+    implementation "edu.wpi.first.wpiutil:wpiutil-java:${WPI_VER}"
+    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86"
+    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
+    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
+    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:osxx86-64"
+
+    implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.steelhawks.lib'
+            artifactId = 'library'
+            version = "${version}"
+
+            from components.java
+        }
+    }
+}
+
+final YEAR = new Date().format('yyyy')
+
+spotless {
+    java {
+        licenseHeader """
+        /* ======================================================================== */
+        /* Copyright (c) ${YEAR} Steel Hawks Robotics Inc. All rights reserved. */
+        /* This work is licensed under the terms of the MIT license */
+        /* found in the root directory of this project. */
+        /* ======================================================================== */
+        
+        """
+
+        googleJavaFormat('1.13.0').aosp()
+
+        trimTrailingWhitespace()
+        endWithNewline()
+
+        importOrder('org.steelhawks.hawklib', 'org.steelhawks', 'edu.wpi')
+        removeUnusedImports()
+    }
+}
+
+javadoc {
+    destinationDir = file('docs/')
+}
+
+build {
+    dependsOn(javadoc)
+}
+
+jar {
+    from sourceSets.main.allSource
+}
+
+// Prevent Gradle from trying to serialize Test.classpath
+tasks.withType(Test).configureEach {
+    // Mark the classpath as "never up-to-date", so Gradle skips serialization
+    outputs.upToDateWhen { false }
+}
