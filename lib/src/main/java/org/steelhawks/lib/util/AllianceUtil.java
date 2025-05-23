@@ -1,7 +1,7 @@
 /* ======================================================================== */
-/* Copyright (c) 2025 Steel Hawks Robotics Inc. All rights reserved.   */
-/* This work is licensed under the terms of the MIT license             */
-/* found in the root directory of this project.                          */
+/* Copyright (c) 2025 Steel Hawks Robotics Inc. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 /* ======================================================================== */
 
 package org.steelhawks.lib.util;
@@ -15,29 +15,25 @@ import edu.wpi.first.math.geometry.*;
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
- * Utility class for transforming field coordinates and rotations
- * based on the current alliance (Blue or Red).
- * <p>
- * Coordinates are flipped across the field centerline when on the Red alliance,
- * allowing code to work symmetrically for both sides.
+ * Utility class for transforming field coordinates and rotations based on the current alliance
+ * (Blue or Red).
+ *
+ * <p>Coordinates are flipped across the field centerline when on the Red alliance, allowing code to
+ * work symmetrically for both sides.
  */
 public class AllianceUtil {
 
-    /**
-     * Total field length in meters, loaded from the default AprilTag field layout.
-     */
+    /** Total field length in meters, loaded from the default AprilTag field layout. */
     private static final double FIELD_LENGTH =
-        AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField).getFieldLength();
+            AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField).getFieldLength();
 
-    /**
-     * Total field width in meters, loaded from the default AprilTag field layout.
-     */
+    /** Total field width in meters, loaded from the default AprilTag field layout. */
     private static final double FIELD_WIDTH =
-        AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField).getFieldWidth();
+            AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField).getFieldWidth();
 
     /**
-     * Apply X-coordinate transformation: if on Red alliance, flip X around mid-field;
-     * otherwise return original X.
+     * Apply X-coordinate transformation: if on Red alliance, flip X around mid-field; otherwise
+     * return original X.
      *
      * @param x the original X coordinate
      * @return the transformed X coordinate
@@ -47,8 +43,8 @@ public class AllianceUtil {
     }
 
     /**
-     * Apply Y-coordinate transformation: if on Red alliance, flip Y around mid-field;
-     * otherwise return original Y.
+     * Apply Y-coordinate transformation: if on Red alliance, flip Y around mid-field; otherwise
+     * return original Y.
      *
      * @param y the original Y coordinate
      * @return the transformed Y coordinate
@@ -68,8 +64,8 @@ public class AllianceUtil {
     }
 
     /**
-     * Transform a Vector2d by converting to Translation2d,
-     * applying alliance flip, and converting back.
+     * Transform a Vector2d by converting to Translation2d, applying alliance flip, and converting
+     * back.
      *
      * @param vector the original Vector2d
      * @return a new Vector2d with potentially flipped coordinates
@@ -106,8 +102,8 @@ public class AllianceUtil {
      */
     public static Pose2d apply(Pose2d pose) {
         return shouldFlip()
-            ? new Pose2d(apply(pose.getTranslation()), apply(pose.getRotation()))
-            : pose;
+                ? new Pose2d(apply(pose.getTranslation()), apply(pose.getRotation()))
+                : pose;
     }
 
     /**
@@ -118,7 +114,7 @@ public class AllianceUtil {
      */
     public static Translation3d apply(Translation3d translation) {
         return new Translation3d(
-            applyX(translation.getX()), applyY(translation.getY()), translation.getZ());
+                applyX(translation.getX()), applyY(translation.getY()), translation.getZ());
     }
 
     /**
@@ -143,13 +139,13 @@ public class AllianceUtil {
 
     /**
      * Determine whether coordinates should be flipped based on current alliance.
-     * <p>
-     * Returns true only when the DriverStation alliance is present and equals Red.
+     *
+     * <p>Returns true only when the DriverStation alliance is present and equals Red.
      *
      * @return true if on Red alliance; false otherwise
      */
     public static boolean shouldFlip() {
         return DriverStation.getAlliance().isPresent()
-            && DriverStation.getAlliance().get() == DriverStation.Alliance.Red;
+                && DriverStation.getAlliance().get() == DriverStation.Alliance.Red;
     }
 }

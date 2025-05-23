@@ -77,6 +77,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">AllianceUtil</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Utility class for transforming field coordinates and rotations based on the current alliance
+ (Blue or Red).
+
+ <p>Coordinates are flipped across the field centerline when on the Red alliance, allowing code to
+ work symmetrically for both sides.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,37 +111,62 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Pose2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a Pose2d by flipping its position and orientation if on Red alliance.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Pose3d</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Pose3d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Pose3d&nbsp;pose)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a 3D pose by applying both translation and rotation flips if needed.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Rotation2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a Rotation2d by rotating 180 degrees if on Red alliance.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Rotation3d</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Rotation3d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Rotation3d&nbsp;rotation)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a 3D rotation by rotating 180 degrees around Z if on Red alliance.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Translation2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Translation2d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Translation2d&nbsp;translation)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a Translation2d by flipping its X/Y if needed.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static edu.wpi.first.math.geometry.Translation3d</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(edu.wpi.first.math.geometry.Translation3d)" class="member-name-link">apply</a><wbr>(edu.wpi.first.math.geometry.Translation3d&nbsp;translation)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a 3D translation by flipping X/Y axes but preserving Z.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../math/Angle.html" title="class in org.steelhawks.lib.math">Angle</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(org.steelhawks.lib.math.Angle)" class="member-name-link">apply</a><wbr>(<a href="../math/Angle.html" title="class in org.steelhawks.lib.math">Angle</a>&nbsp;angle)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform an Angle by applying a Rotation2d flip if needed.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../math/Vector2d.html" title="class in org.steelhawks.lib.math">Vector2d</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#apply(org.steelhawks.lib.math.Vector2d)" class="member-name-link">apply</a><wbr>(<a href="../math/Vector2d.html" title="class in org.steelhawks.lib.math">Vector2d</a>&nbsp;vector)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Transform a Vector2d by converting to Translation2d, applying alliance flip, and converting
+ back.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#applyX(double)" class="member-name-link">applyX</a><wbr>(double&nbsp;x)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Apply X-coordinate transformation: if on Red alliance, flip X around mid-field; otherwise
+ return original X.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#applyY(double)" class="member-name-link">applyY</a><wbr>(double&nbsp;y)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Apply Y-coordinate transformation: if on Red alliance, flip Y around mid-field; otherwise
+ return original Y.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#shouldFlip()" class="member-name-link">shouldFlip</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Determine whether coordinates should be flipped based on current alliance.</div>
+</div>
 </div>
 </div>
 </div>
@@ -172,66 +202,146 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="applyX(double)">
 <h3>applyX</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">applyX</span><wbr><span class="parameters">(double&nbsp;x)</span></div>
+<div class="block">Apply X-coordinate transformation: if on Red alliance, flip X around mid-field; otherwise
+ return original X.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>x</code> - the original X coordinate</dd>
+<dt>Returns:</dt>
+<dd>the transformed X coordinate</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="applyY(double)">
 <h3>applyY</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">applyY</span><wbr><span class="parameters">(double&nbsp;y)</span></div>
+<div class="block">Apply Y-coordinate transformation: if on Red alliance, flip Y around mid-field; otherwise
+ return original Y.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>y</code> - the original Y coordinate</dd>
+<dt>Returns:</dt>
+<dd>the transformed Y coordinate</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Translation2d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Translation2d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Translation2d&nbsp;translation)</span></div>
+<div class="block">Transform a Translation2d by flipping its X/Y if needed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>translation</code> - the original translation</dd>
+<dt>Returns:</dt>
+<dd>a new Translation2d with potentially flipped coordinates</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(org.steelhawks.lib.math.Vector2d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../math/Vector2d.html" title="class in org.steelhawks.lib.math">Vector2d</a></span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(<a href="../math/Vector2d.html" title="class in org.steelhawks.lib.math">Vector2d</a>&nbsp;vector)</span></div>
+<div class="block">Transform a Vector2d by converting to Translation2d, applying alliance flip, and converting
+ back.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>vector</code> - the original Vector2d</dd>
+<dt>Returns:</dt>
+<dd>a new Vector2d with potentially flipped coordinates</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Rotation2d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Rotation2d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</span></div>
+<div class="block">Transform a Rotation2d by rotating 180 degrees if on Red alliance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>rotation</code> - the original rotation</dd>
+<dt>Returns:</dt>
+<dd>the transformed rotation</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(org.steelhawks.lib.math.Angle)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../math/Angle.html" title="class in org.steelhawks.lib.math">Angle</a></span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(<a href="../math/Angle.html" title="class in org.steelhawks.lib.math">Angle</a>&nbsp;angle)</span></div>
+<div class="block">Transform an Angle by applying a Rotation2d flip if needed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>angle</code> - the original Angle</dd>
+<dt>Returns:</dt>
+<dd>a new Angle with potentially flipped orientation</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Pose2d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</span></div>
+<div class="block">Transform a Pose2d by flipping its position and orientation if on Red alliance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pose</code> - the original pose</dd>
+<dt>Returns:</dt>
+<dd>a new Pose2d with potentially flipped translation and rotation</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Translation3d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Translation3d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Translation3d&nbsp;translation)</span></div>
+<div class="block">Transform a 3D translation by flipping X/Y axes but preserving Z.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>translation</code> - the original 3D translation</dd>
+<dt>Returns:</dt>
+<dd>a new Translation3d with potentially flipped X/Y and original Z</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Rotation3d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Rotation3d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation3d&nbsp;rotation)</span></div>
+<div class="block">Transform a 3D rotation by rotating 180 degrees around Z if on Red alliance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>rotation</code> - the original 3D rotation</dd>
+<dt>Returns:</dt>
+<dd>the transformed Rotation3d</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="apply(edu.wpi.first.math.geometry.Pose3d)">
 <h3>apply</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose3d</span>&nbsp;<span class="element-name">apply</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose3d&nbsp;pose)</span></div>
+<div class="block">Transform a 3D pose by applying both translation and rotation flips if needed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pose</code> - the original 3D pose</dd>
+<dt>Returns:</dt>
+<dd>a new Pose3d with potentially flipped translation and rotation</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="shouldFlip()">
 <h3>shouldFlip</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">shouldFlip</span>()</div>
+<div class="block">Determine whether coordinates should be flipped based on current alliance.
+
+ <p>Returns true only when the DriverStation alliance is present and equals Red.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if on Red alliance; false otherwise</dd>
+</dl>
 </section>
 </li>
 </ul>

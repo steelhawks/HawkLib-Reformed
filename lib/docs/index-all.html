@@ -61,7 +61,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Adds another Vector2d object to this Vector2d object.</div>
 </dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html" class="type-name-link" title="class in org.steelhawks.lib.util">AllianceUtil</a> - Class in <a href="org/steelhawks/lib/util/package-summary.html">org.steelhawks.lib.util</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Utility class for transforming field coordinates and rotations based on the current alliance
+ (Blue or Red).</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#%3Cinit%3E()" class="member-name-link">AllianceUtil()</a> - Constructor for class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/steelhawks/lib/math/Angle.html" class="type-name-link" title="class in org.steelhawks.lib.math">Angle</a> - Class in <a href="org/steelhawks/lib/math/package-summary.html">org.steelhawks.lib.math</a></dt>
@@ -77,25 +80,48 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates a new Angle object with the specified angle in radians.</div>
 </dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">apply(Pose2d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a Pose2d by flipping its position and orientation if on Red alliance.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Pose3d)" class="member-name-link">apply(Pose3d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a 3D pose by applying both translation and rotation flips if needed.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">apply(Rotation2d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a Rotation2d by rotating 180 degrees if on Red alliance.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Rotation3d)" class="member-name-link">apply(Rotation3d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a 3D rotation by rotating 180 degrees around Z if on Red alliance.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Translation2d)" class="member-name-link">apply(Translation2d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a Translation2d by flipping its X/Y if needed.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(edu.wpi.first.math.geometry.Translation3d)" class="member-name-link">apply(Translation3d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a 3D translation by flipping X/Y axes but preserving Z.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(org.steelhawks.lib.math.Angle)" class="member-name-link">apply(Angle)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform an Angle by applying a Rotation2d flip if needed.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#apply(org.steelhawks.lib.math.Vector2d)" class="member-name-link">apply(Vector2d)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Transform a Vector2d by converting to Translation2d, applying alliance flip, and converting
+ back.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#applyX(double)" class="member-name-link">applyX(double)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Apply X-coordinate transformation: if on Red alliance, flip X around mid-field; otherwise
+ return original X.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#applyY(double)" class="member-name-link">applyY(double)</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Apply Y-coordinate transformation: if on Red alliance, flip Y around mid-field; otherwise
+ return original Y.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
@@ -300,7 +326,9 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
 <dt><a href="org/steelhawks/lib/util/AllianceUtil.html#shouldFlip()" class="member-name-link">shouldFlip()</a> - Static method in class org.steelhawks.lib.util.<a href="org/steelhawks/lib/util/AllianceUtil.html" title="class in org.steelhawks.lib.util">AllianceUtil</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Determine whether coordinates should be flipped based on current alliance.</div>
+</dd>
 <dt><a href="org/steelhawks/lib/math/Angle.html#sin" class="member-name-link">sin</a> - Variable in class org.steelhawks.lib.math.<a href="org/steelhawks/lib/math/Angle.html" title="class in org.steelhawks.lib.math">Angle</a></dt>
 <dd>
 <div class="block">The sine value of this angle.</div>
