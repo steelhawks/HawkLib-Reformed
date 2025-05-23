@@ -1,0 +1,11 @@
+jdk:
+  - openjdk7
+
+build:
+  gradle:
+    wrapper: true
+    file: lib/build.gradle
+
+publish:
+  javadoc:
+    source: lib/docs
