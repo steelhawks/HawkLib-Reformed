@@ -96,7 +96,7 @@ spotless {
 }
 
 javadoc {
-    destinationDir = file('docs/')
+    destinationDir = file('../javadoc/')
 }
 
 build {
